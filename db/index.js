@@ -183,9 +183,12 @@ async function getPostsByUser(userId) {
 
 async function createTags(tagList) {
   console.log("Starting to create a tag...");
+  console.log("This is taglist", tagList);
   if (tagList.length === 0) {
-    return;
+    console.log("about to return");
+    return [];
   }
+
   const insertValues = tagList.map((_, index) => `$${index + 1}`).join("), (");
 
   const selectValues = tagList.map((_, index) => `$${index + 1}`).join(", ");

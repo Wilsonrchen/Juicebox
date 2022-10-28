@@ -15,14 +15,17 @@ const apiRouter = require("./api");
 app.use(morgan("dev"));
 app.use(express.json());
 
-app.use("/api", apiRouter);
-
 app.use((req, res, next) => {
   console.log("<____Body Logger START____>");
   console.log(req.body);
   console.log("<_____Body Logger END_____>");
 
   next();
+});
+
+app.use("/api", apiRouter);
+app.use((err, req, res, next) => {
+  res.status(500).send(err);
 });
 
 app.listen(PORT, () => {
