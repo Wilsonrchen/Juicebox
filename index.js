@@ -1,4 +1,5 @@
 require("dotenv").config();
+const path = require("path");
 const express = require("express");
 const morgan = require("morgan");
 
@@ -14,6 +15,7 @@ const apiRouter = require("./api");
 // Middleware
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(express.static(path.join(__dirname, "./client", "dist")));
 
 app.use((req, res, next) => {
   console.log("<____Body Logger START____>");
@@ -35,6 +37,10 @@ app.get("/background/:color", (req, res, next) => {
     </body>
   `);
 });
+
+// app.use((req, res, next) => {
+//   res.sendFile(path.join(__dirname, "./client/dist", "index.html"));
+// });
 
 app.listen(PORT, () => {
   console.log("The server is up on port", PORT);

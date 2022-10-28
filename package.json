@@ -2,7 +2,8 @@
   "scripts": {
     "seed:dev": "nodemon ./db/seed.js",
     "start": "node index.js",
-    "start:dev": "nodemon index.js"
+    "start:dev": "(npm run dev --prefix client) & nodemon index.js",
+    "build": "npm install --prefix client && npm run build --prefix client "
   },
   "dependencies": {
     "dotenv": "^16.0.3",
