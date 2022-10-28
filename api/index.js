@@ -9,7 +9,9 @@ const usersRouter = require("./users");
 const postsRouter = require("./posts");
 const tagsRouter = require("./tags");
 
-//Middleware
+//Middleware checks for a token, if there is a valid token, attaches
+// the user (returned to us from jwt.verify) to the request as it moves
+// on to it's final destination
 apiRouter.use(async (req, res, next) => {
   const prefix = "Bearer ";
   const auth = req.header("Authorization");

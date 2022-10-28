@@ -22,10 +22,18 @@ app.use((req, res, next) => {
 
   next();
 });
-
+// Router
 app.use("/api", apiRouter);
 app.use((err, req, res, next) => {
   res.status(500).send(err);
+});
+
+app.get("/background/:color", (req, res, next) => {
+  res.send(`
+    <body style="background: ${req.params.color};">
+      <h1>Hello World</h1>
+    </body>
+  `);
 });
 
 app.listen(PORT, () => {
