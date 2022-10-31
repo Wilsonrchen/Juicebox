@@ -6,7 +6,7 @@ const morgan = require("morgan");
 const { client } = require("./db");
 
 const app = express();
-const PORT = 3000;
+const PORT = 8080;
 
 client.connect();
 

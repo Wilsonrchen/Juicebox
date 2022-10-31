@@ -1,5 +1,10 @@
 {
+  "name": "juicebox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
+    "seed": "node ./db/seed.js",
     "seed:dev": "nodemon ./db/seed.js",
     "start": "node index.js",
     "start:dev": "(npm run dev --prefix client) & nodemon index.js",
