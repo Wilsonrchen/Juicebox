@@ -26,6 +26,11 @@ app.use((req, res, next) => {
 });
 // Router
 app.use("/api", apiRouter);
+
+app.use((req, res, next) => {
+  res.sendFile(path.join(__dirname, "./client/dist", "index.html"));
+});
+
 app.use((err, req, res, next) => {
   res.status(500).send(err);
 });
@@ -37,10 +42,6 @@ app.get("/background/:color", (req, res, next) => {
     </body>
   `);
 });
-
-// app.use((req, res, next) => {
-//   res.sendFile(path.join(__dirname, "./client/dist", "index.html"));
-// });
 
 app.listen(PORT, () => {
   console.log("The server is up on port", PORT);
